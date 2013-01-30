@@ -23,7 +23,7 @@
   </filter-mapping>
 
   <servlet>
-    <servlet-name>hungryhawk</servlet-name>
+    <servlet-name>dispatcherServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
@@ -32,7 +32,7 @@
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>hungryhawk</servlet-name>
+    <servlet-name>dispatcherServlet</servlet-name>
     <url-pattern>/restaurant/*</url-pattern>
     <!--<url-pattern>/*</url-pattern>-->
   </servlet-mapping>

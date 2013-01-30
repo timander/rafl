@@ -30,36 +30,7 @@
     </property>
   </bean>
 
-  <!-- enable spring validation -->
-  <!--<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>-->
-
   <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
-
-  <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-    <property name="mappings">
-      <props>
-        <!--<prop key="events">eventConroller</prop>-->
-        <!--<prop key="events/add">addEventConroller</prop>-->
-        <!--<prop key="events/save">addEventConroller</prop>-->
-        <!--<prop key="events/edit">addEventConroller</prop>-->
-        <prop key="reservations">reservationConroller</prop>
-        <prop key="reservations/add">reservationConroller</prop>
-      </props>
-    </property>
-    <property name="order" value="1"/>
-  </bean>
-
-  <!--<bean id="eventConroller" class="net.timandersen.web.EventController">-->
-  <!--<property name="eventDao" ref="eventDao"/>-->
-  <!--</bean>-->
-
-  <!--<bean id="addEventConroller" class="net.timandersen.web.AddEventController">-->
-  <!--<property name="eventDao" ref="eventDao"/>-->
-  <!--</bean>-->
-
-  <bean id="reservationConroller" class="net.timandersen.web.ReservationController">
-    <property name="dao" ref="reservationDao"/>
-  </bean>
 
   <!--servlet stuff-->
 
@@ -67,7 +38,7 @@
     <property name="basename" value="messages"/>
   </bean>
 
-  <bean id="viewResolver" class="net.timandersen.web.HungryHawkViewResolver">
+  <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
     <property name="prefix" value="/WEB-INF/jsp/"></property>
     <property name="suffix" value=".jsp"></property>

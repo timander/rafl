@@ -1,9 +1,0 @@
-!1 !contents
-
-!define today {!today (MM/dd/yyyy)}
-!define nextweek {!today (MM/dd/yyyy) +7}
-!define threeweeks {!today (MM/dd/yyyy) +21}
-
-!path ../target/test-classes
-!path ../target/classes
-!path ../target/dependency/*

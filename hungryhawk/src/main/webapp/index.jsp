@@ -5,5 +5,4 @@
 
 <p>
   <a href="<c:url value="restaurant/events"/>">Events</a><br>
-  <a href="<c:url value="restaurant/reservations"/>">Reservations</a>
 </p>
