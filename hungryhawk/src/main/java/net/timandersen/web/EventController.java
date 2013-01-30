@@ -74,7 +74,7 @@ public class EventController {
     EventForm form = new EventForm();
     form.setEvents(eventDao.findAll());
     model.addAttribute("command", form);
-    return "/events/show";
+    return "/events/list";
   }
 
 }

@@ -1,43 +1,54 @@
 package net.timandersen.model.domain;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+
+@Entity
+@Table(name = "events")
 public class Event implements Serializable {
 
-  private Long id;
-  private String name;
-  private Date date;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, nullable = false)
+    private Long id;
 
-  public Event() {
-  }
+    @Column
+    private String name;
 
-  public Event(String name, Date date) {
-    this.name = name;
-    this.date = date;
-  }
+    @Column(name = "eventDate")
+    private Date date;
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+    public Event() {
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public Event(String name, Date date) {
+        this.name = name;
+        this.date = date;
+    }
 
-  public void setDate(Date date) {
-    this.date = date;
-  }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-  public Long getId() {
-    return id;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
-  public Date getDate() {
-    return date;
-  }
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Date getDate() {
+        return date;
+    }
 }
