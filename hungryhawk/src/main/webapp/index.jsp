@@ -4,5 +4,5 @@
 <!-- c:redirect url="/hello.htm"/ -->
 
 <p>
-  <a href="<c:url value="restaurant/events"/>">Events</a><br>
+  <a href="<c:url value="/schedule/events"/>">Events</a><br>
 </p>

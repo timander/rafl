@@ -4,9 +4,9 @@
          xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
                              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         id="HungryHawkWeb" version="2.5">
+         id="exampleappWeb" version="2.5">
 
-  <display-name>hungryhawk</display-name>
+  <display-name>exampleapp</display-name>
 
   <filter>
     <filter-name>encoding-filter</filter-name>
@@ -33,7 +33,7 @@
 
   <servlet-mapping>
     <servlet-name>dispatcherServlet</servlet-name>
-    <url-pattern>/restaurant/*</url-pattern>
+    <url-pattern>/schedule/*</url-pattern>
     <!--<url-pattern>/*</url-pattern>-->
   </servlet-mapping>
 

@@ -35,7 +35,7 @@ public class EventController {
     return eventForm;
   }
 
-  // url = /hungryhawk/events
+  // url = /exampleapp/events
   @RequestMapping(value = "/events", method = RequestMethod.GET)
   public String listEvents(ModelMap model) {
     System.out.println("EventController.listEvents");
@@ -46,7 +46,7 @@ public class EventController {
     return "/events/list";
   }
 
-  // url = /hungryhawk/events/add
+  // url = /exampleapp/events/add
   @RequestMapping(value = "/events/add", method = RequestMethod.GET)
   public String newEvent(ModelMap model) {
     System.out.println("EventController.newEvent");
@@ -55,7 +55,7 @@ public class EventController {
     return "/events/add";
   }
 
-  // url = /hungryhawk/events/show/{1}
+  // url = /exampleapp/events/show/{1}
   @RequestMapping(value = "/events/show/{eventId}", method = RequestMethod.GET)
   public String showEvent(@RequestParam Long eventId, ModelMap model) {
     Event event = eventDao.findById(eventId);
@@ -66,7 +66,7 @@ public class EventController {
     return "/events/show";
   }
 
-  // url = /hungryhawk/events/save
+  // url = /exampleapp/events/save
   @RequestMapping(value = "/events/save", method = RequestMethod.POST)
   public String saveEvent(EventForm incomingForm, BindingResult result, ModelMap model) {
     Event event = new Event(incomingForm.getName(), incomingForm.getDate());

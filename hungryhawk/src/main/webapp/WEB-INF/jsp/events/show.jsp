@@ -2,7 +2,7 @@
 
 <h1>Show Event</h1>
 
-<c:url var="url" value="/events/edit"/>
+<c:url var="url" value="/schedule/events/edit"/>
 <form:form action="${url}" commandName="command">
     <fieldset>
         <div>
