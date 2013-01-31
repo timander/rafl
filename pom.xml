@@ -13,6 +13,7 @@
     </properties>
 
     <modules>
+        <module>parent</module>
         <module>config</module>
         <module>sql</module>
         <module>web</module>
