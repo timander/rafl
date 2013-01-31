@@ -45,11 +45,18 @@
                         </goals>
                         <configuration>
                             <files>
-                                <file>${basedir}/src/main/resources/config.properties</file>
+                                <file>${basedir}/../config/src/main/resources/config.properties</file>
                             </files>
                         </configuration>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.studentloan</groupId>
+                        <artifactId>exampleapp-config</artifactId>
+                        <version>1.0-SNAPSHOT</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>com.googlecode.flyway</groupId>

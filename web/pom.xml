@@ -13,6 +13,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.studentloan</groupId>
+            <artifactId>exampleapp-config</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
@@ -140,7 +145,7 @@
                         </goals>
                         <configuration>
                             <files>
-                                <file>${basedir}/src/main/resources/config.properties</file>
+                                <file>${basedir}/../config/src/main/resources/config.properties</file>
                             </files>
                         </configuration>
                     </execution>
