@@ -1,2 +1,9 @@
-http://static.springsource.org/docs/Spring-MVC-step-by-step/part1.html
-http://docs.codehaus.org/display/JETTY/Maven+Jetty+Plugin
+upgrade jetty
+
+add fitnesse (new version)
+
+upgrade spring
+
+exctract config module
+
+extract sql module
