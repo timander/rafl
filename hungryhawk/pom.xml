@@ -71,6 +71,12 @@
       <version>1.2.141</version>
     </dependency>
     <dependency>
+      <groupId>net.sourceforge.jtds</groupId>
+      <artifactId>jtds</artifactId>
+      <version>1.2.5-isl.0</version>
+      <scope>provided</scope>
+    </dependency>
+      <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
       <version>3.6.0.Final</version>
@@ -102,6 +108,12 @@
       <version>1.9.0</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.googlecode.flyway</groupId>
+      <artifactId>flyway-core</artifactId>
+      <version>2.0.3</version>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -134,59 +146,41 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>sql-maven-plugin</artifactId>
-        <version>1.4</version>
-        <dependencies>
-          <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.2.141</version>
-          </dependency>
-        </dependencies>
-        <configuration>
-          <driver>${database.driver}</driver>
-          <url>${database.url}</url>
-          <username>${database.username}</username>
-          <password>${database.password}</password>
-          <skip>${maven.db.skip}</skip>
-          <autocommit>true</autocommit>
-        </configuration>
-        <executions>
-          <execution>
-            <id>drop-and-create-database</id>
-            <phase>process-test-resources</phase>
-            <goals>
-              <goal>execute</goal>
-            </goals>
+        <plugin>
+            <groupId>com.googlecode.flyway</groupId>
+            <artifactId>flyway-maven-plugin</artifactId>
+            <version>2.0.3</version>
             <configuration>
-              <url>jdbc:h2:~/test</url>
-              <sqlCommand>
-                drop all objects;
-              </sqlCommand>
-              <onError>continue</onError>
+                <driver>${database.driver}</driver>
+                <url>${database.url}</url>
+                <user>${database.username}</user>
+                <password>${database.password}</password>
+                <!--<schemas>dbo</schemas>-->
+                <!--<table></table>-->
+                <locations>
+                    <location>sql/migrations</location>
+                </locations>
+                <!--<sqlMigrationPrefix>V</sqlMigrationPrefix>-->
+                <!--<sqlMigrationSuffix>.sql</sqlMigrationSuffix>-->
+                <!--<target></target>-->
+                <encoding>ISO-8859-1</encoding>
+                <validationMode>ALL</validationMode>
+                <validationErrorMode>FAIL</validationErrorMode>
+                <disableInitCheck>false</disableInitCheck>
             </configuration>
-          </execution>
-          <execution>
-            <id>create-schema</id>
-            <phase>process-test-resources</phase>
-            <goals>
-              <goal>execute</goal>
-            </goals>
-            <configuration>
-              <fileset>
-                <basedir>${basedir}</basedir>
-                <includes>
-                  <include>src/main/sql/baseline/*.sql</include>
-                  <include>src/main/sql/changes/*.sql</include>
-                  <include>src/test/sql/testdata/*.sql</include>
-                </includes>
-              </fileset>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+            <executions>
+                <execution>
+                    <id>flyway database migration</id>
+                    <phase>test-compile</phase>
+                    <goals>
+                        <goal>clean</goal>
+                        <goal>init</goal>
+                        <goal>migrate</goal>
+                        <goal>info</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
       <plugin>
         <groupId>org.mortbay.jetty</groupId>
         <artifactId>maven-jetty-plugin</artifactId>
