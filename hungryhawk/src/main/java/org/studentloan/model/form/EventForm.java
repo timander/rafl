@@ -1,6 +1,6 @@
-package net.timandersen.model.form;
+package org.studentloan.model.form;
 
-import net.timandersen.model.domain.Event;
+import org.studentloan.model.domain.Event;
 
 import java.util.ArrayList;
 import java.util.Date;

@@ -17,7 +17,7 @@
         <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
         <property name="packagesToScan">
             <list>
-                <value>net.timandersen.model.domain</value>
+                <value>org.studentloan.model.domain</value>
             </list>
         </property>
     </bean>
@@ -26,7 +26,7 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="eventDao" class="net.timandersen.repository.EventDao">
+    <bean id="eventDao" class="org.studentloan.repository.EventDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 

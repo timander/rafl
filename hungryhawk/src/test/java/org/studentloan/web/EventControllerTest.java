@@ -1,4 +1,4 @@
-package net.timandersen.web;
+package org.studentloan.web;
 
 import org.junit.Test;
 

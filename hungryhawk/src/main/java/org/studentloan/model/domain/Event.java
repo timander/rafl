@@ -1,4 +1,4 @@
-package net.timandersen.model.domain;
+package org.studentloan.model.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;

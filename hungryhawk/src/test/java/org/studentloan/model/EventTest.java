@@ -1,4 +1,4 @@
-package net.timandersen.model;
+package org.studentloan.model;
 
 import org.junit.Test;
 

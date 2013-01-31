@@ -1,4 +1,4 @@
-package net.timandersen.util;
+package org.studentloan.util;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
