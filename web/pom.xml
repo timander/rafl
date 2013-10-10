@@ -2,21 +2,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
-        <groupId>org.studentloan</groupId>
+        <groupId>net.timandersen</groupId>
         <artifactId>exampleapp-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../parent/pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.studentloan</groupId>
+    <groupId>net.timandersen</groupId>
     <artifactId>exampleapp-web</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
-            <groupId>org.studentloan</groupId>
+            <groupId>net.timandersen</groupId>
             <artifactId>exampleapp-config</artifactId>
             <scope>provided</scope>
         </dependency>
@@ -65,11 +65,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>net.sourceforge.jtds</groupId>
-            <artifactId>jtds</artifactId>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -160,7 +155,7 @@
                 </executions>
                 <dependencies>
                     <dependency>
-                        <groupId>org.studentloan</groupId>
+                        <groupId>net.timandersen</groupId>
                         <artifactId>exampleapp-sql</artifactId>
                         <version>1.0-SNAPSHOT</version>
                     </dependency>
@@ -172,7 +167,7 @@
                 <configuration>
                     <connectors>
                         <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-                            <port>9090</port>
+                            <port>9001</port>
                             <maxIdleTime>60000</maxIdleTime>
                         </connector>
                     </connectors>
@@ -202,7 +197,7 @@
                 </executions>
                 <dependencies>
                     <dependency>
-                        <groupId>org.studentloan</groupId>
+                        <groupId>net.timandersen</groupId>
                         <artifactId>exampleapp-config</artifactId>
                         <version>1.0-SNAPSHOT</version>
                     </dependency>

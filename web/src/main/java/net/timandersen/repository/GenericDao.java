@@ -1,4 +1,4 @@
-package org.studentloan.repository;
+package net.timandersen.repository;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;

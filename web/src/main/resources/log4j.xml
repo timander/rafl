@@ -9,7 +9,7 @@
         </layout>
     </appender>
 
-    <logger name="org.studentloan" additivity="false">
+    <logger name="net.timandersen" additivity="false">
         <level value="error"/>
         <appender-ref ref="console"/>
     </logger>

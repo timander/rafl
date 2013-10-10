@@ -1,6 +1,6 @@
-package org.studentloan.repository;
+package net.timandersen.repository;
 
-import org.studentloan.model.domain.Event;
+import net.timandersen.model.domain.Event;
 
 import java.util.Date;
 

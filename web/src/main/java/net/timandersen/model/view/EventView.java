@@ -1,6 +1,6 @@
-package org.studentloan.model.view;
+package net.timandersen.model.view;
 
-import org.studentloan.model.domain.Event;
+import net.timandersen.model.domain.Event;
 
 import java.util.List;
 

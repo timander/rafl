@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.studentloan</groupId>
+    <groupId>net.timandersen</groupId>
     <artifactId>exampleapp-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
@@ -16,7 +16,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.studentloan</groupId>
+                <groupId>net.timandersen</groupId>
                 <artifactId>exampleapp-config</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
@@ -74,11 +74,6 @@
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
                 <version>1.2.141</version>
-            </dependency>
-            <dependency>
-                <groupId>net.sourceforge.jtds</groupId>
-                <artifactId>jtds</artifactId>
-                <version>1.2.5-isl.0</version>
             </dependency>
             <dependency>
                 <groupId>org.hibernate</groupId>

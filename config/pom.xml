@@ -2,14 +2,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
-        <groupId>org.studentloan</groupId>
+        <groupId>net.timandersen</groupId>
         <artifactId>exampleapp-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../parent/pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.studentloan</groupId>
+    <groupId>net.timandersen</groupId>
     <artifactId>exampleapp-config</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>

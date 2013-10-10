@@ -1,8 +1,8 @@
-package org.studentloan.web;
+package net.timandersen.web;
 
-import org.studentloan.model.domain.Event;
-import org.studentloan.model.form.EventForm;
-import org.studentloan.repository.EventDao;
+import net.timandersen.model.domain.Event;
+import net.timandersen.model.form.EventForm;
+import net.timandersen.repository.EventDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

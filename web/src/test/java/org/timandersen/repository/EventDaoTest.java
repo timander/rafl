@@ -1,7 +1,7 @@
-package org.studentloan.repository;
+package net.timandersen.repository;
 
-import org.studentloan.model.domain.Event;
-import org.studentloan.util.SpringContextWrapper;
+import net.timandersen.model.domain.Event;
+import net.timandersen.util.SpringContextWrapper;
 import org.junit.Test;
 
 import java.util.Date;

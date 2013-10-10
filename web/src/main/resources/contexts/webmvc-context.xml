@@ -11,7 +11,7 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
   <!--Scans within the base package of the application for @Components to configure as beans -->
-  <context:component-scan base-package="org.studentloan"/>
+  <context:component-scan base-package="net.timandersen"/>
 
   <mvc:annotation-driven/>
 

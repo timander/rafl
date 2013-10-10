@@ -2,14 +2,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
-        <groupId>org.studentloan</groupId>
+        <groupId>net.timandersen</groupId>
         <artifactId>exampleapp-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../parent/pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.studentloan</groupId>
+    <groupId>net.timandersen</groupId>
     <artifactId>exampleapp-sql</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
@@ -22,6 +22,12 @@
         <dependency>
             <groupId>com.googlecode.flyway</groupId>
             <artifactId>flyway-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.dbfit</groupId>
+            <artifactId>dbfit</artifactId>
+            <version>1.1.2.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
