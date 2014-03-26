@@ -70,7 +70,7 @@
                     <!--<target></target>-->
                     <encoding>ISO-8859-1</encoding>
                     <validationMode>ALL</validationMode>
-                    <validationErrorMode>FAIL</validationErrorMode>
+                    <cleanOnValidationError>true</cleanOnValidationError>
                     <disableInitCheck>false</disableInitCheck>
                 </configuration>
                 <executions>

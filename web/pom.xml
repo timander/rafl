@@ -143,17 +143,12 @@
                     <url>${database.url}</url>
                     <user>${database.username}</user>
                     <password>${database.password}</password>
-                    <!--<schemas>dbo</schemas>-->
-                    <!--<table></table>-->
                     <locations>
                         <location>sql/migrations</location>
                     </locations>
-                    <!--<sqlMigrationPrefix>V</sqlMigrationPrefix>-->
-                    <!--<sqlMigrationSuffix>.sql</sqlMigrationSuffix>-->
-                    <!--<target></target>-->
                     <encoding>ISO-8859-1</encoding>
-                    <validationMode>ALL</validationMode>
-                    <validationErrorMode>FAIL</validationErrorMode>
+                    <validateOnMigrate>true</validateOnMigrate>
+                    <cleanOnValidationError>true</cleanOnValidationError>
                     <disableInitCheck>false</disableInitCheck>
                 </configuration>
                 <executions>
@@ -218,11 +213,11 @@
                         <artifactId>rafl-config</artifactId>
                         <version>1.0-SNAPSHOT</version>
                     </dependency>
-                    <dependency>
-                        <groupId>org.apache.tomcat</groupId>
-                        <artifactId>tomcat-jasper</artifactId>
-                        <version>8.0.3</version>
-                    </dependency>
+                    <!--<dependency>-->
+                        <!--<groupId>org.apache.tomcat</groupId>-->
+                        <!--<artifactId>tomcat-jasper</artifactId>-->
+                        <!--<version>8.0.3</version>-->
+                    <!--</dependency>-->
                 </dependencies>
             </plugin>
         </plugins>
