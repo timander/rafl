@@ -3,14 +3,14 @@
 
     <parent>
         <groupId>net.timandersen</groupId>
-        <artifactId>exampleapp-parent</artifactId>
+        <artifactId>rafl-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../parent/pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.timandersen</groupId>
-    <artifactId>exampleapp-sql</artifactId>
+    <artifactId>rafl-sql</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
 
@@ -33,7 +33,7 @@
     </dependencies>
 
     <build>
-        <finalName>exampleapp</finalName>
+        <finalName>rafl</finalName>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

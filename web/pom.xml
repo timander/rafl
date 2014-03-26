@@ -3,21 +3,21 @@
 
     <parent>
         <groupId>net.timandersen</groupId>
-        <artifactId>exampleapp-parent</artifactId>
+        <artifactId>rafl-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../parent/pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.timandersen</groupId>
-    <artifactId>exampleapp-web</artifactId>
+    <artifactId>rafl-web</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
             <groupId>net.timandersen</groupId>
-            <artifactId>exampleapp-config</artifactId>
+            <artifactId>rafl-config</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -116,7 +116,7 @@
     </dependencies>
 
     <build>
-        <finalName>exampleapp</finalName>
+        <finalName>rafl</finalName>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -171,24 +171,27 @@
                 <dependencies>
                     <dependency>
                         <groupId>net.timandersen</groupId>
-                        <artifactId>exampleapp-sql</artifactId>
+                        <artifactId>rafl-sql</artifactId>
                         <version>1.0-SNAPSHOT</version>
                     </dependency>
                 </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
-                <artifactId>maven-jetty-plugin</artifactId>
+                <artifactId>jetty-maven-plugin</artifactId>
                 <configuration>
+                    <stopKey>yagni</stopKey>
+                    <stopPort>9995</stopPort>
+                    <scanIntervalSeconds>1</scanIntervalSeconds>
+                    <webAppConfig>
+                        <contextPath>/rafl</contextPath>
+                    </webAppConfig>
                     <connectors>
-                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-                            <port>9001</port>
+                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                            <port>8086</port>
                             <maxIdleTime>60000</maxIdleTime>
                         </connector>
                     </connectors>
-                    <scanIntervalSeconds>10</scanIntervalSeconds>
-                    <stopKey>foo</stopKey>
-                    <stopPort>9999</stopPort>
                 </configuration>
                 <executions>
                     <execution>
@@ -198,7 +201,6 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
-                            <scanIntervalSeconds>0</scanIntervalSeconds>
                             <daemon>true</daemon>
                         </configuration>
                     </execution>
@@ -213,12 +215,16 @@
                 <dependencies>
                     <dependency>
                         <groupId>net.timandersen</groupId>
-                        <artifactId>exampleapp-config</artifactId>
+                        <artifactId>rafl-config</artifactId>
                         <version>1.0-SNAPSHOT</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.tomcat</groupId>
+                        <artifactId>tomcat-jasper</artifactId>
+                        <version>8.0.3</version>
                     </dependency>
                 </dependencies>
             </plugin>
         </plugins>
     </build>
-
 </project>
