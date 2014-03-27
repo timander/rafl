@@ -10,15 +10,15 @@
         <th>Name</th>
         <th>Date</th>
       </tr>
-      <c:forEach items="${command.events}" var="event">
+      <c:forEach items="${raffles}" var="raffle">
         <tr>
-          <td><c:out value="${event.name}"/></td>
-          <td><i><fmt:formatDate value="${event.date}" type="date" pattern="EEEEE, MMMMM dd, yyyy"/></i></td>
+          <td><c:out value="${raffle.cause}"/></td>
+          <td><i><fmt:formatDate value="${raffle.startDate}" type="date" pattern="EEEEE, MMMMM dd, yyyy"/></i></td>
         </tr>
       </c:forEach>
     </table>
     <br>
-    <a href="<c:url value="/drawing/events/add"/>">Add Event</a>
+    <a href="<c:url value="/drawing/raffle/new"/>">Add Raffle</a>
     <br>
   </body>
 </html>

@@ -1,17 +1,17 @@
 <%@ include file="/WEB-INF/jsp/include.jsp" %>
 
-<h1>Add/Edit Event</h1>
+<h1>Add/Edit Raffle</h1>
 
 <c:url var="url" value="save"/>
-<form:form action="${url}" commandName="eventForm">
+<form:form action="${url}" commandName="raffle">
     <fieldset>
         <div>
-          <label for="name">Name</label>
-          <form:input path="name"/>
+          <label for="cause">Cause</label>
+          <form:input path="cause"/>
         </div>
         <div>
-          <label for="date">Date</label>
-          <form:input path="date"/>
+          <label for="startDate">Start Date</label>
+          <form:input path="startDate"/>
         </div>
         <div>
           <input name="submit" type="submit" value="save"/>

@@ -63,4 +63,14 @@ public class Raffle implements Serializable {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
+
+    @Override
+    public String toString() {
+        return "Raffle{" +
+                "id=" + id +
+                ", cause='" + cause + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                '}';
+    }
 }
