@@ -11,7 +11,7 @@ public class RaffleControllerTest {
     public void newRaffle() throws Exception {
         RaffleController controller = new RaffleController();
         ModelAndView modelAndView = controller.newRaffle();
-        assertEquals("raffle/new", modelAndView.getViewName());
+        assertEquals("raffle_new", modelAndView.getViewName());
     }
 
 }
