@@ -179,9 +179,10 @@
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <configuration>
+                    <jvmArgs>-Xmx256m -XX:PermSize=128M -XX:MaxPermSize=256M</jvmArgs>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
                     <stopKey>yagni</stopKey>
                     <stopPort>9995</stopPort>
-                    <scanIntervalSeconds>1</scanIntervalSeconds>
                     <webAppConfig>
                         <contextPath>/rafl</contextPath>
                     </webAppConfig>

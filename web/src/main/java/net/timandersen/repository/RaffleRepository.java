@@ -34,4 +34,15 @@ public class RaffleRepository {
         sessionFactory.getCurrentSession().getTransaction().commit();
     }
 
+    public Raffle findById(Integer raffleId) {
+        sessionFactory.getCurrentSession().beginTransaction();
+        Query query = sessionFactory.getCurrentSession().createQuery("from Raffle where id = :id");
+        query.setInteger("id", raffleId);
+        List<Raffle> list = query.list();
+        return firstOrNull(list);
+    }
+
+    private Raffle firstOrNull(List<Raffle> raffles) {
+        return raffles.isEmpty() ? null : raffles.get(0);
+    }
 }

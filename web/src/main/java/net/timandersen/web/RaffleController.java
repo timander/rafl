@@ -5,10 +5,13 @@ import net.timandersen.model.domain.Raffle;
 import net.timandersen.repository.RaffleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
 
 @Controller
 public class RaffleController {
@@ -26,16 +29,13 @@ public class RaffleController {
     }
 
     @RequestMapping(value = "/admin/save", method = RequestMethod.POST)
-    public ModelAndView createRaffle(HttpServletRequest request) {
+    public String createRaffle(HttpServletRequest request) throws ParseException {
         String cause = request.getParameter("cause");
-        String startDate = request.getParameter("startDate");
-        System.out.println("cause = " + cause);
-        System.out.println("startDate = " + startDate);
         Raffle raffle = new Raffle();
-        raffle.setCause((String) request.getAttribute("cause"));
+        raffle.setCause(cause);
         raffle.setStartDate(dateProvider.now());
         repository.save(raffle);
-        return new ModelAndView("raffle_show", "raffle", raffle);
+        return "redirect:/drawing/admin/raffle/" + raffle.getId();
     }
 
     @RequestMapping(value = "/admin/raffle", method = RequestMethod.GET)
@@ -45,7 +45,8 @@ public class RaffleController {
 
     @RequestMapping(value = "/admin/raffle/{raffleId}", method = RequestMethod.GET)
     public ModelAndView showRaffle(@PathVariable String raffleId, HttpServletRequest request) {
-        return null;
+        Raffle raffle = repository.findById(new Integer(raffleId));
+        return new ModelAndView("raffle_show", "raffle", raffle);
     }
 
 }
