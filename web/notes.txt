@@ -11,8 +11,10 @@ vocabulary:
     overhead fee
 
 infrastructure setup:
-    add fitnesse
-    add cucumber
+    Create Selenium Tests
+    Create JMeter tests
+    Create Cucumber tests
+    Create FitNesse tests
     add foreign keys
     add test data
     use oracle jdbc with jndi
@@ -30,3 +32,19 @@ backlog:
     email players (subethasmtp) to notify participants who won and how much
     upload file of raffle participants
     interface with payment api
+
+
+Create Raffle Application
+	Player can enter drawing
+	Admin can draw a winner
+	System notifies all participants of winner
+	New Raffle is available
+	A Raffle can be setup to run on a Quartz schedule (as long as there are enough players)
+
+More Tech:
+Test Email using SubEthaSMTP
+Show DateProvider pattern
+Show Bean-Oh Spring testing
+Show Spring context loading practices (test contexts, main contexts)
+Use Apache Tiles
+Use JQuery
