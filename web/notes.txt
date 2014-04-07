@@ -1,9 +1,32 @@
-upgrade jetty
+vocabulary:
+    raffle maker
+    participant
+    raffle
+    ticket
+    winner
+    fundraising effort
+    refund
+    payment
+    payout
+    overhead fee
 
-add fitnesse (new version)
+infrastructure setup:
+    add fitnesse
+    add cucumber
+    add foreign keys
+    add test data
+    use oracle jdbc with jndi
 
-upgrade spring
+next feature:
+    participants can buy as many tickets as they want for any raffle
 
-exctract config module
-
-extract sql module
+backlog:
+    display participants for a raffle and what the fundraising effort and end date are
+    pick winner on automated schedule if fundraising effort met (quartz)
+    anyone can create a raffle (be a raffle maker)
+        set ticket price
+        set fundraising effort minimum
+        set end date (refund participants if minimum not set?)
+    email players (subethasmtp) to notify participants who won and how much
+    upload file of raffle participants
+    interface with payment api
