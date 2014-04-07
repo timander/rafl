@@ -3,5 +3,5 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <head>
-    <title>Example App</title>
+    <title>Rafl</title>
 </head>

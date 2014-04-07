@@ -2,7 +2,7 @@
 
 <h1>Show Raffle</h1>
 
-<c:url var="url" value="/drawing/admin/edit"/>
+<c:url var="url" value="/drawing/edit"/>
 <form:form action="${url}" commandName="raffle">
     <fieldset>
         <div>

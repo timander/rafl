@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
+import java.util.List;
 
 @Controller
 public class RaffleController {
@@ -23,28 +24,35 @@ public class RaffleController {
     private DateProvider dateProvider;
 
 
-    @RequestMapping(value = "/admin/new", method = RequestMethod.GET)
-    public ModelAndView newRaffle() {
+    @RequestMapping(value = "/raffle/new", method = RequestMethod.GET)
+    public ModelAndView create() {
         return new ModelAndView("raffle_new", "raffle", new Raffle());
     }
 
-    @RequestMapping(value = "/admin/save", method = RequestMethod.POST)
-    public String createRaffle(HttpServletRequest request) throws ParseException {
+    @RequestMapping(value = "/raffle/edit/{raffleId}", method = RequestMethod.GET)
+    public ModelAndView edit(@PathVariable String raffleId) {
+        Raffle raffle = repository.findById(new Integer(raffleId));
+        return new ModelAndView("raffle_show", "raffle", raffle);
+    }
+
+    @RequestMapping(value = "/raffle/save", method = RequestMethod.POST)
+    public String save(HttpServletRequest request) throws ParseException {
         String cause = request.getParameter("cause");
         Raffle raffle = new Raffle();
         raffle.setCause(cause);
         raffle.setStartDate(dateProvider.now());
         repository.save(raffle);
-        return "redirect:/drawing/admin/raffle/" + raffle.getId();
+        return "redirect:/drawing/raffle/" + raffle.getId();
     }
 
-    @RequestMapping(value = "/admin/raffle", method = RequestMethod.GET)
-    public ModelAndView listActiveRaffles(@PathVariable String region, @PathVariable String callHistoryId, HttpServletRequest request) {
-        return null;
+    @RequestMapping(value = "/raffle/list", method = RequestMethod.GET)
+    public ModelAndView list(HttpServletRequest request) {
+        List<Raffle> raffles = repository.findAll();
+        return new ModelAndView("raffle_list", "raffles", raffles);
     }
 
-    @RequestMapping(value = "/admin/raffle/{raffleId}", method = RequestMethod.GET)
-    public ModelAndView showRaffle(@PathVariable String raffleId, HttpServletRequest request) {
+    @RequestMapping(value = "/raffle/{raffleId}", method = RequestMethod.GET)
+    public ModelAndView show(@PathVariable String raffleId, HttpServletRequest request) {
         Raffle raffle = repository.findById(new Integer(raffleId));
         return new ModelAndView("raffle_show", "raffle", raffle);
     }

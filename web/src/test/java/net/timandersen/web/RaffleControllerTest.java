@@ -10,7 +10,7 @@ public class RaffleControllerTest {
     @Test
     public void newRaffle() throws Exception {
         RaffleController controller = new RaffleController();
-        ModelAndView modelAndView = controller.newRaffle();
+        ModelAndView modelAndView = controller.create();
         assertEquals("raffle_new", modelAndView.getViewName());
     }
 
