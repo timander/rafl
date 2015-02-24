@@ -89,12 +89,7 @@
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-core</artifactId>
-                <version>3.6.0.Final</version>
-            </dependency>
-            <dependency>
-                <groupId>javassist</groupId>
-                <artifactId>javassist</artifactId>
-                <version>3.8.0.GA</version>
+                <version>4.2.18.Final</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
