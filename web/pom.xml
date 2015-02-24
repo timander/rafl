@@ -123,6 +123,28 @@
         <finalName>rafl</finalName>
         <plugins>
             <plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <target>2.2</target>
+                    <wsdlLocation>http://www.webservicex.net/*</wsdlLocation>
+                    <wsdlDirectory>src/main/resources/wsdl</wsdlDirectory>
+                    <wsdlFiles>
+                        <wsdlFile>globalweather.wsdl</wsdlFile>
+                    </wsdlFiles>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>wsimport</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>properties-maven-plugin</artifactId>
                 <executions>
