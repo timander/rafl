@@ -1,22 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
-<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+<log4j:configuration debug="true" xmlns:log4j='http://jakarta.apache.org/log4j/'>
 
     <appender name="console" class="org.apache.log4j.ConsoleAppender">
-        <param name="target" value="System.out"/>
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%d{DATE} [%-5p] %c{1}: %m%n"/>
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%p] %c:%L - %m%n"/>
         </layout>
     </appender>
 
-    <logger name="net.timandersen" additivity="false">
-        <level value="error"/>
-        <appender-ref ref="console"/>
-    </logger>
+    <appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="../logs/rafl.log"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%p] %c:%L - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="email" class="org.apache.log4j.net.SMTPAppender">
+        <param name="BufferSize" value="512"/>
+        <param name="SMTPHost" value="${rafl.smtp.host}"/>
+        <param name="From" value="${ralf.email.errors.from}"/>
+        <param name="To" value="${rafl.email.errors.to}"/>
+        <param name="Threshold" value="error"/>
+        <param name="Subject" value="rafl error ${env.prefix}"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{ISO8601}]%n%n%-5p%n%n%c%n%n%m%n%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="ERROR"/>
+            <param name="LevelMax" value="FATAL"/>
+        </filter>
+    </appender>
 
     <root>
-        <level value="error"/>
+        <level value="INFO"/>
         <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+        <appender-ref ref="email"/>
     </root>
 
 </log4j:configuration>
