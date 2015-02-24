@@ -69,8 +69,9 @@ public class GenericEnumUserType<E extends Enum<E>> implements UserType, Paramet
         }
 
         try {
-            return valueOfMethod.invoke(enumClass, new Object[]{identifier});
+            return valueOfMethod.invoke(enumClass, identifier);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new HibernateException("Exception while invoking valueOf method '" + valueOfMethod.getName() + "' of " +
                     "enumeration class '" + enumClass + "'", e);
         }
@@ -81,7 +82,7 @@ public class GenericEnumUserType<E extends Enum<E>> implements UserType, Paramet
             if (value == null) {
                 st.setNull(index, ((AbstractSingleColumnStandardBasicType<?>) type).sqlType());
             } else {
-                Object identifier = identifierMethod.invoke(value, new Object[0]);
+                Object identifier = identifierMethod.invoke(value);
                 type.nullSafeSet(st, identifier, index, session);
             }
         } catch (Exception e) {

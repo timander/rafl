@@ -1,8 +1,10 @@
 package net.timandersen.model.domain;
 
+import net.timandersen.enums.Gender;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 
 
 @Entity
@@ -21,6 +23,10 @@ public class Player implements Serializable {
     private String lastName;
 
     @Column
+    @Type(type = "net.timandersen.enums.GenderEnumUserType")
+    private Gender gender;
+
+    @Column
     private String email;
 
     @Column
@@ -29,9 +35,10 @@ public class Player implements Serializable {
     public Player() {
     }
 
-    public Player(String firstName, String lastName, String email, int tickets) {
+    public Player(String firstName, String lastName, Gender gender, String email, int tickets) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.gender = gender;
         this.email = email;
         this.tickets = tickets;
     }
@@ -46,6 +53,10 @@ public class Player implements Serializable {
 
     public String getEmail() {
         return email;
+    }
+
+    public Gender getGender() {
+        return gender;
     }
 
     public int getTickets() {

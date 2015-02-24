@@ -10,6 +10,7 @@ create table player (
   raffleId integer,
   firstname varchar(255),
   lastname varchar(255),
+  gender varchar(1),
   email varchar(255),
   tickets integer
 );
