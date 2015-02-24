@@ -7,7 +7,31 @@
 
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+
+    <bean id="connectionPool" class="org.apache.commons.pool.impl.GenericObjectPool">
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+    </bean>
+
+    <bean id="dsConnectionFactory" class="org.apache.commons.dbcp.DataSourceConnectionFactory">
+        <constructor-arg index="0" ref="unpooledDataSource"/>
+    </bean>
+
+    <bean id="poolableConnectionFactory" class="org.apache.commons.dbcp.PoolableConnectionFactory">
+        <constructor-arg index="0" ref="dsConnectionFactory"/>
+        <constructor-arg index="1" ref="connectionPool"/>
+        <constructor-arg index="2"><null/></constructor-arg>
+        <constructor-arg index="3"><null/></constructor-arg>
+        <constructor-arg index="4" value="false"/>
+        <constructor-arg index="5" value="true"/>
+    </bean>
+
+    <bean id="pooledDataSource" class="org.apache.commons.dbcp.PoolingDataSource"
+          depends-on="poolableConnectionFactory">
+        <constructor-arg index="0" ref="connectionPool"/>
+    </bean>
+
+    <bean id="unpooledDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${database.driver}"/>
         <property name="url" value="${database.url}"/>
         <property name="username" value="${database.username}"/>
@@ -15,7 +39,7 @@
     </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
+        <property name="dataSource" ref="pooledDataSource"/>
         <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
         <property name="packagesToScan">
             <list>
@@ -29,7 +53,7 @@
     </bean>
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="dataSource"/>
+        <property name="dataSource" ref="pooledDataSource"/>
     </bean>
 
 </beans>
