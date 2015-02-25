@@ -29,9 +29,9 @@ public class RaffleRepository {
         sessionFactory.getCurrentSession().delete(entity);
     }
 
-    public Raffle findById(Integer raffleId) {
+    public Raffle findById(Long raffleId) {
         Query query = sessionFactory.getCurrentSession().createQuery("from Raffle where id = :id");
-        query.setInteger("id", raffleId);
+        query.setLong("id", raffleId);
         List<Raffle> list = query.list();
         return firstOrNull(list);
     }

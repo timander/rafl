@@ -31,7 +31,7 @@ public class RaffleController {
 
     @RequestMapping(value = "/raffle/edit/{raffleId}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable String raffleId) {
-        Raffle raffle = repository.findById(new Integer(raffleId));
+        Raffle raffle = repository.findById(Long.valueOf(raffleId));
         return new ModelAndView("raffle_show", "raffle", raffle);
     }
 
@@ -53,7 +53,7 @@ public class RaffleController {
 
     @RequestMapping(value = "/raffle/{raffleId}", method = RequestMethod.GET)
     public ModelAndView show(@PathVariable String raffleId, HttpServletRequest request) {
-        Raffle raffle = repository.findById(new Integer(raffleId));
+        Raffle raffle = repository.findById(Long.valueOf(raffleId));
         return new ModelAndView("raffle_show", "raffle", raffle);
     }
 

@@ -14,15 +14,12 @@ public enum Gender {
         this.description = description;
     }
 
-    public Gender findByCode(String code) {
-        System.out.println("Gender.findByCode");
-        System.out.println("code = " + code);
+    public static Gender findByCode(String code) {
         for (Gender g : values()) {
             if (g.getCode().equals(code)) return g;
         }
         return null;
     }
-
 
     public String getCode() {
         return code;

@@ -29,9 +29,9 @@ public class PlayerRepository {
         sessionFactory.getCurrentSession().delete(entity);
     }
 
-    public Player findById(Integer playerId) {
+    public Player findById(Long playerId) {
         Query query = sessionFactory.getCurrentSession().createQuery("from Player where id = :id");
-        query.setInteger("id", playerId);
+        query.setLong("id", playerId);
         List<Player> list = query.list();
         return firstOrNull(list);
     }
