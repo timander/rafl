@@ -15,8 +15,13 @@ create table player (
   tickets integer
 );
 
-create table winner (
-  raffleId integer,
+create table ticket (
+  ticketId integer identity primary key,
   playerId integer,
-  payout integer
+  raffleId integer,
+  number bigint,
+  purchaseDate date
 );
+
+alter table ticket add foreign key (playerId) references player(playerId);
+alter table ticket add foreign key (raffleId) references raffle(raffleId);

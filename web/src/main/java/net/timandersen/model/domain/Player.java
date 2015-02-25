@@ -1,10 +1,14 @@
 package net.timandersen.model.domain;
 
 import net.timandersen.enums.Gender;
-import org.hibernate.annotations.Type;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Entity
@@ -29,18 +33,19 @@ public class Player implements Serializable {
     @Column
     private String email;
 
-    @Column
-    private int tickets;
+    @OneToMany(mappedBy = "player", orphanRemoval = true)
+    @Cascade(value = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Ticket> tickets;
 
     public Player() {
     }
 
-    public Player(String firstName, String lastName, Gender gender, String email, int tickets) {
+    public Player(String firstName, String lastName, Gender gender, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.email = email;
-        this.tickets = tickets;
     }
 
     public String getFirstName() {
@@ -59,7 +64,8 @@ public class Player implements Serializable {
         return gender;
     }
 
-    public int getTickets() {
+    public List<Ticket> getTickets() {
         return tickets;
     }
+
 }

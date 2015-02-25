@@ -22,13 +22,12 @@ public class PlayerRepositoryTest {
     public void saveFindDelete() {
         deleteAll();
         assertTrue(repository.findAll().isEmpty());
-        Player player = new Player("John", "Doe", Gender.MALE, "johndoe@johndoe.com", 1);
+        Player player = new Player("John", "Doe", Gender.MALE, "johndoe@johndoe.com");
         repository.save(player);
         Player persistedPlayer = repository.findAll().get(0);
         assertEquals("John", persistedPlayer.getFirstName());
         assertEquals("Doe", persistedPlayer.getLastName());
         assertEquals("johndoe@johndoe.com", persistedPlayer.getEmail());
-        assertEquals(1, persistedPlayer.getTickets());
         assertEquals(Gender.MALE, persistedPlayer.getGender());
         deleteAll();
         assertTrue(repository.findAll().isEmpty());
