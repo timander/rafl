@@ -2,9 +2,11 @@ package net.timandersen.repository;
 
 import net.timandersen.enums.Gender;
 import net.timandersen.model.domain.Player;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -17,6 +19,16 @@ public class PlayerRepositoryTest {
 
     @Autowired
     private PlayerRepository repository;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    @Before
+    public void setUp() {
+        jdbcTemplate.execute("delete from ticket");
+        jdbcTemplate.execute("delete from player");
+        jdbcTemplate.execute("delete from raffle");
+    }
 
     @Test
     public void saveFindDelete() {

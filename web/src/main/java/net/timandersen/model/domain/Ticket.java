@@ -24,6 +24,9 @@ public class Ticket {
     @JoinColumn(name = "raffleId", nullable = false)
     private Raffle raffle;
 
+    public Ticket() {
+    }
+
     public Ticket(Player player, Raffle raffle) {
         number = RandomUtils.nextLong();
         this.player = player;

@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -36,7 +37,7 @@ public class Player implements Serializable {
     @OneToMany(mappedBy = "player", orphanRemoval = true)
     @Cascade(value = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Ticket> tickets;
+    private List<Ticket> tickets = new ArrayList<Ticket>();
 
     public Player() {
     }
@@ -68,4 +69,7 @@ public class Player implements Serializable {
         return tickets;
     }
 
+    public void buyTicketFor(Raffle raffle) {
+        tickets.add(new Ticket(this, raffle));
+    }
 }
