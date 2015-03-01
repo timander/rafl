@@ -5,6 +5,7 @@
 
     <import resource="database-context.xml"/>
     <import resource="webmvc-context.xml"/>
+    <import resource="version-context.xml"/>
 
     <bean id="configProperties"
           class="net.timandersen.util.EnvironmentVariablePropertyPlaceholderConfigurer"
