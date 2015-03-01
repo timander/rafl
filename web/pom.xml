@@ -219,6 +219,14 @@
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
+                <version>8.1.12.v20130726</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.timandersen</groupId>
+                        <artifactId>rafl-config</artifactId>
+                        <version>1.0-SNAPSHOT</version>
+                    </dependency>
+                </dependencies>
                 <configuration>
                     <jvmArgs>-Xmx256m -XX:PermSize=128M -XX:MaxPermSize=256M</jvmArgs>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
@@ -233,6 +241,12 @@
                             <maxIdleTime>60000</maxIdleTime>
                         </connector>
                     </connectors>
+                    <systemProperties>
+                        <systemProperty>
+                            <name>applicationRootURL</name>
+                            <value>http://localhost:8086</value>
+                        </systemProperty>
+                    </systemProperties>
                 </configuration>
                 <executions>
                     <execution>
@@ -253,18 +267,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>net.timandersen</groupId>
-                        <artifactId>rafl-config</artifactId>
-                        <version>1.0-SNAPSHOT</version>
-                    </dependency>
-                    <!--<dependency>-->
-                    <!--<groupId>org.apache.tomcat</groupId>-->
-                    <!--<artifactId>tomcat-jasper</artifactId>-->
-                    <!--<version>8.0.3</version>-->
-                    <!--</dependency>-->
-                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

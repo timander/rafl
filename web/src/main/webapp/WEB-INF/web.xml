@@ -1,54 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://java.sun.com/xml/ns/javaee"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-                             http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         id="rafl" version="2.5">
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         metadata-complete="true" version="3.0">
 
-    <display-name>rafl</display-name>
+    <display-name>rafl-web</display-name>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:/contexts/application-context.xml</param-value>
+    </context-param>
 
     <listener>
-        <listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-
-    <filter>
-        <filter-name>encoding-filter</filter-name>
-        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-        <init-param>
-            <param-name>encoding</param-name>
-            <param-value>UTF-8</param-value>
-        </init-param>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>encoding-filter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
 
     <servlet>
         <servlet-name>dispatcherServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:contexts/application-context.xml</param-value>
+            <param-value>WEB-INF/spring/servlet-context.xml</param-value>
         </init-param>
-    </servlet>
-
-    <servlet>
-        <servlet-name>Tiles Dispatch Servlet</servlet-name>
-        <servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>dispatcherServlet</servlet-name>
-        <url-pattern>/drawing/*</url-pattern>
-        <!--<url-pattern>/*</url-pattern>-->
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <servlet-mapping>
-        <servlet-name>Tiles Dispatch Servlet</servlet-name>
-        <url-pattern>*.tiles</url-pattern>
-    </servlet-mapping>
+    <!--<filter>-->
+        <!--<filter-name>hibernateFilter</filter-name>-->
+        <!--<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>-->
+        <!--<init-param>sessionFactoryBeanName</init-param>-->
+        <!--<init-param>sessionFactory</init-param>-->
+    <!--</filter>-->
+
+    <!--<filter-mapping>-->
+        <!--<filter-name>hibernateFilter</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+        <!--<dispatcher>REQUEST</dispatcher>-->
+        <!--<dispatcher>FORWARD</dispatcher>-->
+    <!--</filter-mapping>-->
+
+    <!--<resource-ref>-->
+        <!--<res-ref-name>RaflJndiDataSource</res-ref-name>-->
+        <!--<res-type>javax.sql.DataSource</res-type>-->
+        <!--<res-auth>Application</res-auth>-->
+        <!--<res-sharing-scope>Shareable</res-sharing-scope>-->
+    <!--</resource-ref>-->
 
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
