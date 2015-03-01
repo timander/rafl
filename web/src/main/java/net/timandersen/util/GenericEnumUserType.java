@@ -35,7 +35,7 @@ public class GenericEnumUserType<E extends Enum<E>> implements UserType, Paramet
 
     public void setParameterValues(Properties parameters) {
         try {
-            identifierMethod = enumClass.getMethod(identifierMethodName, new Class[0]);
+            identifierMethod = enumClass.getMethod(identifierMethodName);
             identifierType = identifierMethod.getReturnType();
         } catch (Exception e) {
             throw new HibernateException("Failed to obtain identifier method named '" + identifierMethodName
@@ -49,7 +49,7 @@ public class GenericEnumUserType<E extends Enum<E>> implements UserType, Paramet
         sqlTypes = new int[]{((AbstractSingleColumnStandardBasicType<?>) type).sqlType()};
 
         try {
-            valueOfMethod = enumClass.getMethod(valueOfMethodName, new Class[]{identifierType});
+            valueOfMethod = enumClass.getMethod(valueOfMethodName, identifierType);
         } catch (Exception e) {
             throw new HibernateException(
                     "Failed to obtain a method named '" + valueOfMethodName + "' which accepts and argument of type '"
@@ -92,7 +92,7 @@ public class GenericEnumUserType<E extends Enum<E>> implements UserType, Paramet
     }
 
     public int[] sqlTypes() {
-        return sqlTypes;
+        return sqlTypes.clone();
     }
 
     public Object assemble(Serializable cached, Object owner) throws HibernateException {
@@ -108,7 +108,7 @@ public class GenericEnumUserType<E extends Enum<E>> implements UserType, Paramet
     }
 
     public boolean equals(Object x, Object y) throws HibernateException {
-        return x == y;
+        return x != null && x.equals(y);
     }
 
     public int hashCode(Object x) throws HibernateException {
