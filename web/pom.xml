@@ -234,6 +234,7 @@
                     <stopPort>9995</stopPort>
                     <webAppConfig>
                         <contextPath>/rafl</contextPath>
+                        <jettyEnvXml>${project.build.directory}/test-classes/jetty/jetty-env.xml</jettyEnvXml>
                     </webAppConfig>
                     <connectors>
                         <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">

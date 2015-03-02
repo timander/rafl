@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:contexts/application-context.xml")
+@ContextConfiguration(locations = "classpath:/test-contexts/test-context.xml")
 public class RaffleRepositoryTest {
 
     @Autowired

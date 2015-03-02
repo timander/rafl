@@ -26,7 +26,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:contexts/application-context.xml")
+@ContextConfiguration(locations = "classpath:/test-contexts/test-context.xml")
 public class LoadTest {
 
     @Autowired
